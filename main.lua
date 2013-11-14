@@ -203,56 +203,61 @@ function rollDice()
 	display.remove(dicetxt)
 	dicetxt = nil
 
-	if dice < 25 then
+	if dice < 30 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Dot" } )
 		score = score
 		dicetxt = display.newText("Dot.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	elseif dice > 26 and dice < 55 then
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
+	elseif dice > 31 and dice < 55 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Single"} )
 		score = score + 1
 		dicetxt = display.newText("Single.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
 	elseif dice > 56 and dice < 70 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Double"} )
 		score = score + 2
 		dicetxt = display.newText("Double.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	elseif dice > 71 and dice < 5 then
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
+	elseif dice > 71 and dice < 75 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Treble"} )
 		score = score + 3
 		dicetxt = display.newText("Treble.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	elseif dice > 76 and dice < 85 then
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
+	elseif dice > 76 and dice < 80 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Four"} )
 		score = score + 4
 		dicetxt = display.newText("Four.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	else if dice > 86 and dice < 90 then
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
+	else if dice > 91 and dice < 95 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Six"} )
 		score = score + 6
 		dicetxt = display.newText("Six.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
-		dicetxt.y = centerY
+		dicetxt.y = centerY		dicetxt:setTextColor(255, 0, 0)
 		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	else
+	else if dice > 96 and dice < 100 then
 		GameAnalytics.newEvent ( "design", { event_id = "Ball:Wicket"} )
 		wickets = wickets + 1
 		dicetxt = display.newText("Out.", 0, 0, "Helvetica", 24)
 		dicetxt.x = centerX
+		dicetxt.y = centerY		dicetxt:setTextColor(255, 0, 0)
+		scoretxt.text = "Score: " .. score .. "/" .. wickets	else		GameAnalytics.newEvent ( "design", { event_id = "Ball:Dot" } )
+		score = score
+		dicetxt = display.newText("Dot.", 0, 0, "Helvetica", 24)
+		dicetxt.x = centerX
 		dicetxt.y = centerY
-		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	end	dicetxt:setTextColor(255, 0, 0)
+		dicetxt:setTextColor(255, 0, 0)		scoretxt.text = "Score: " .. score .. "/" .. wickets
+	endend
 	if wickets == 10 then
 		native.showAlert( "Game Over", "You scored " .. score .. ".", { "OK" } )
 		display.remove(battxt)
