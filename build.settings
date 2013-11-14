@@ -3,7 +3,9 @@ settings =
 	
 	android =
 	{
-		versionCode = "100",		googlePlayGamesAppId = "1082122171850"
+		versionCode = "101",
+		googlePlayGamesAppId = "1082122171850"
+
 	},
 
 	androidPermissions =

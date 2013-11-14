@@ -6,24 +6,28 @@
 -- Managed with http://CoronaProjectManager.com
 --
 -- Copyright 2013 . All Rights Reserved.
--- 
+-- 
+
 
 display.setStatusBar(display.HiddenStatusBar)
 
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
 
-require ("GameAnalytics")gameNetwork = require ( "gameNetwork" )
+require ("GameAnalytics")
+gameNetwork = require ( "gameNetwork" )
 
-GameAnalytics.submitWhileRoaming = true 
-GameAnalytics.isDebug = true
+GameAnalytics.submitWhileRoaming = true 
+
+GameAnalytics.isDebug = true
+
 GameAnalytics.archiveEvents = true
 GameAnalytics.runInSimulator = false
 
 GameAnalytics.init ( {
 game_key = "4b5c6bebeb72e1eacdfb9bd42fba45d9",
 secret_key = "a9c5df5e7f36405dc806169f20386b814de655c1",
-build_name = "1.0.0",
+build_name = "1.0.1",
 } )
 
 gameNetwork.init("google")
@@ -248,8 +252,9 @@ function rollDice()
 		dicetxt.x = centerX
 		dicetxt.y = centerY
 		scoretxt.text = "Score: " .. score .. "/" .. wickets
-	end
-	if wickets == 10 then		native.showAlert( "Game Over", "You scored " .. score .. ".", { "OK" } )
+	end	dicetxt:setTextColor(255, 0, 0)
+	if wickets == 10 then
+		native.showAlert( "Game Over", "You scored " .. score .. ".", { "OK" } )
 		display.remove(battxt)
 		display.remove(scoretxt)
 		battxt = nil
@@ -261,7 +266,8 @@ function rollDice()
 			    localPlayerScore = { category=leaderboardHighestScore, value=score },
   			  listener = requestCallback
 			})
-		giveRank()
+		giveRank()
+
 		startGame()
 	end
 end
@@ -273,11 +279,11 @@ function playGame()
 	scoretxt = display.newText( "Score: 0/0", 0, 0, "Helvetica", 24 )
 	scoretxt.x = centerX
 	scoretxt.y = 50
-	scoretxt:setTextColor(0, 0, 0)
+	scoretxt:setTextColor(255, 0, 0)
 	battxt = display.newText( "BAT!", 0, 0, "Helvetica", 24)
 	battxt.x = centerX
 	battxt.y = display.contentHeight - 30
-	battxt:setTextColor(0, 0, 0)
+	battxt:setTextColor(255, 0, 0)
 	battxt:addEventListener ( "tap", rollDice )
 end
 
@@ -290,23 +296,23 @@ function startGame()
     local title = display.newText( "Jarokn Cricket", 0, 0, "Helvetica", 24 )
     title.x= centerX
     title.y = 50
-    title:setTextColor(0, 0, 0)
+    title:setTextColor(255, 0, 0)
 	local txt = display.newText( "Tap here to start.", 0, 0, "Helvetica", 24 )
 	txt.x = centerX
-	txt:setTextColor(0, 0, 0)
+	txt:setTextColor(255, 0, 0)
 	txt.y = display.contentHeight - 30
 	local highscore = display.newText( "Highscores", 0, 0, "Helvetica", 24 )
 	highscore.x = centerX / 2
 	highscore.y = centerY - 50
-	highscore:setTextColor(0, 0, 0)
+	highscore:setTextColor(255, 0, 0)
 	local achievements = display.newText( "Achievements", 0, 0, "Helvetica", 24 )
 	loginLogout = display.newText("Login/out", 0, 0, "Helvetica", 24 )
 	achievements.x = centerX / 2
 	achievements.y = centerY
-	achievements:setTextColor(0, 0, 0)
+	achievements:setTextColor(255, 0, 0)
 	loginLogout.x = centerX / 2
 	loginLogout.y = centerY + 50
-	loginLogout:setTextColor(0, 0, 0)
+	loginLogout:setTextColor(255, 0, 0)
 
 	local function goAway(event)
 		display.remove(event.target)
